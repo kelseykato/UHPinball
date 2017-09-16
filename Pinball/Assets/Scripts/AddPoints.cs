@@ -8,6 +8,7 @@ public class AddPoints : MonoBehaviour {
 	public float multiplierScale; 
 	private ScoreKeeper ScoringObject;
 	public GameObject bumper;
+	public GameObject ball;
 
 //	void Awake(){
 //		ScoringObject = gameObject.Find("Main_Camera");
@@ -28,11 +29,11 @@ public class AddPoints : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) {
 		float oldMult = ScoringObject.GetMultiplier ();
-		if (collision.gameObject.name == "EyeBall") {
+		if (collision.gameObject.name == ball.name) {
 			//Destroy (bumper);
 			ScoringObject.Score (pointsForBumper);
 			ScoringObject.SetMultiplier (oldMult += multiplierScale);
-			print (ScoringObject.GetMultiplier());	
+			//print (ScoringObject.GetMultiplier());	
 		}
 	}
 }

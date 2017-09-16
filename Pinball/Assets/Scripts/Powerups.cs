@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Powerups : MonoBehaviour {
 
+
+	public GameObject token;
+	public GameObject ball; 
+
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +18,13 @@ public class Powerups : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	void OnCollisionEnter(Collision col) {
+		if (col.gameObject.name == ball.name) {
+			Destroy (token);
+		}
+	}
+
 }
+
+
