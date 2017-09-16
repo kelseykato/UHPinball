@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\MovePaddle.cs" />
      <Compile Include="Assets\Scripts\Oscillate_Horizontal.cs" />
      <Compile Include="Assets\Scripts\Powerups.cs" />
+     <Compile Include="Assets\Scripts\PowerupSpawner.cs" />
      <Compile Include="Assets\Scripts\ScoreKeeper.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
