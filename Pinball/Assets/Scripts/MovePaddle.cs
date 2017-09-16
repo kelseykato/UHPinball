@@ -8,9 +8,10 @@ public class MovePaddle : MonoBehaviour {
 	public float maxVelocity;
 	public GameObject paddleL;
 	public GameObject paddleR;
+	public ScoreKeeper ScoringObject;
 
 	void Start() {
-	
+		ScoringObject = GameObject.Find ("Camera").GetComponent<ScoreKeeper> ();
 	}
 
 	void Update() {
@@ -36,6 +37,15 @@ public class MovePaddle : MonoBehaviour {
 		} else {
 			rbr.AddForce (-transform.forward * forceAmount, ForceMode.Acceleration);
 			rbr.useGravity = true;
+		}
+	}
+
+	void OnCollisionEnter (Collision collision) {
+
+		if (collision.gameObject.name == "EyeBall") {
+			//Destroy (bumper);
+			ScoringObject.SetMultiplier(1);
+			//print (ScoringObject.TotalScore);	
 		}
 	}
 

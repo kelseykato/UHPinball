@@ -5,6 +5,7 @@ using UnityEngine;
 public class AddPoints : MonoBehaviour {
 
 	public int pointsForBumper;
+	public float multiplierScale; 
 	private ScoreKeeper ScoringObject;
 	public GameObject bumper;
 
@@ -26,11 +27,12 @@ public class AddPoints : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision collision) {
-
+		float oldMult = ScoringObject.GetMultiplier ();
 		if (collision.gameObject.name == "EyeBall") {
 			//Destroy (bumper);
 			ScoringObject.Score (pointsForBumper);
-			//print (ScoringObject.TotalScore);	
+			ScoringObject.SetMultiplier (oldMult += multiplierScale);
+			print (ScoringObject.GetMultiplier());	
 		}
 	}
 }
