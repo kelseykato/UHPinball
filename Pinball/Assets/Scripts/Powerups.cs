@@ -32,7 +32,7 @@ public class Powerups : MonoBehaviour {
 	void OnCollisionEnter(Collision col) {
 		
 		index = spawner.index;
-		print (index);
+		// print (index);
 		float oldMult = ScoringObject.GetMultiplier ();
 		ScoringObject.Score (50);
 		Vector3 ballSpawn = new Vector3(2.5f, 2.0f, 3.0f);
@@ -47,11 +47,16 @@ public class Powerups : MonoBehaviour {
 			Instantiate (ball, ballSpawn, ballRotation);
 			index = -1;
 			break;
+		case 2: 
+			ScoringObject.Score (100);
+			index = -1;
+			break;
 		default:
 			break;
 		}
 
 		Destroy (token);
+		spawner.activePowerup = false;
 	}
 
 
