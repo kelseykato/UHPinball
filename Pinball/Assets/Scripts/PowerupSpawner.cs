@@ -10,6 +10,7 @@ public class PowerupSpawner : MonoBehaviour {
 	public Vector3 spawnValues;
 	private int limit = 10;
 	private GameObject token;
+	internal int index; 
 
 	// Use this for initialization
 	void Start () {
@@ -18,11 +19,11 @@ public class PowerupSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		token = powerups [Random.Range (0, powerups.Length)];
-		Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
-		Quaternion spawnRotation = Quaternion.identity;
-
 		if (ScoringObject.TotalScore > limit) {
+			index = Random.Range (0, powerups.Length);
+			token = powerups [index];
+			Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+			Quaternion spawnRotation = Quaternion.identity;
 			Instantiate (token, spawnPosition, spawnRotation);
 			limit += 100;
 		}

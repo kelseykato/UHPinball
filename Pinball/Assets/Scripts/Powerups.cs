@@ -6,16 +6,21 @@ public class Powerups : MonoBehaviour {
 
 
 	public GameObject token;
+	public GameObject ball;
 	private bool left = true;
 	private bool right = false;
-	public float moveSpeed;
+	private float moveSpeed;
 	private float rotateSpeed;
 	private PowerupSpawner spawner;
+	private ScoreKeeper ScoringObject;
+	private int index;
 
 	// Use this for initialization
 	void Start () {
 		spawner = GameObject.Find ("Powerups").GetComponent<PowerupSpawner> ();
+		ScoringObject = GameObject.Find ("Camera").GetComponent<ScoreKeeper> ();
 		rotateSpeed = 50;
+		moveSpeed = 4;
 	}
 	
 	// Update is called once per frame
@@ -25,6 +30,27 @@ public class Powerups : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
+		
+		index = spawner.index;
+		print (index);
+		float oldMult = ScoringObject.GetMultiplier ();
+		ScoringObject.Score (50);
+		Vector3 ballSpawn = new Vector3(2.5f, 2.0f, 3.0f);
+		Quaternion ballRotation = Quaternion.identity;
+
+		switch (index) {
+		case 0:
+			ScoringObject.SetMultiplier (oldMult += 5);
+			index = -1;
+			break;
+		case 1:
+			Instantiate (ball, ballSpawn, ballRotation);
+			index = -1;
+			break;
+		default:
+			break;
+		}
+
 		Destroy (token);
 	}
 

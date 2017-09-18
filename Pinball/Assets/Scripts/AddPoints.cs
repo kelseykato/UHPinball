@@ -29,11 +29,13 @@ public class AddPoints : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) {
 		float oldMult = ScoringObject.GetMultiplier ();
-		if (collision.gameObject.name == ball.name) {
-			//Destroy (bumper);
-			ScoringObject.Score (pointsForBumper);
-			ScoringObject.SetMultiplier (oldMult += multiplierScale);
-			//print (ScoringObject.GetMultiplier());	
-		}
+		ScoringObject.Score (pointsForBumper);
+		ScoringObject.SetMultiplier (oldMult += multiplierScale);
+
+//		if (collision.gameObject.name == ball.name || collision.gameObject.name == ball.name+"_Clone") {
+//			//Destroy (bumper);
+//			
+//			//print (ScoringObject.GetMultiplier());	
+//		}
 	}
 }
