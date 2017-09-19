@@ -14,19 +14,22 @@ public class GameController : MonoBehaviour {
 	public GUIText livesText;
 	public GUIText restartText;
 	public GUIText launchBallText;
+	public GUIText flipperText;
 
 	private Vector3 ballSpawn;
 	private Quaternion ballRotation;
 	internal bool initBall;
+	private bool flipperTextActive;
 
 	private PowerupSpawner PowerSpawner;
 
 	// Use this for initialization
 	void Start () {
 		gameState = 0;
-		ballSpawn = new Vector3(2.5f, 2.0f, 3.0f);
+		ballSpawn = new Vector3(4.5f, 12.7f, 8.0f);
 		ballRotation = Quaternion.identity;
 		initBall = true;
+		flipperTextActive = true;
 		PowerSpawner = GameObject.Find ("Powerups").GetComponent<PowerupSpawner> ();
 	}
 	
@@ -41,14 +44,12 @@ public class GameController : MonoBehaviour {
 			if(Input.GetKey(KeyCode.R)) {
 				gameState = 0;
 				PowerSpawner.ResetLimit ();
+				flipperTextActive = true;
 			}
 			break;
 
 		case 0:
-			gameOverText.text = null;
-			restartText.text = null;
-			livesText.text = null;
-			launchBallText.text = null;
+			EraseAllText ();
 			startText.text = "Press SPACE to Start";
 			if (Input.GetKey (KeyCode.Space)) {
 				gameState = 1;
@@ -58,8 +59,7 @@ public class GameController : MonoBehaviour {
 			break;
 
 		case 1:
-			startText.text = null;
-			gameOverText.text = null;
+			EraseAllText ();
 			UpdateLifeCount ();
 			if (initBall && Input.GetKey (KeyCode.F)) {
 				launchBallText.text = null;
@@ -68,6 +68,12 @@ public class GameController : MonoBehaviour {
 			}
 			if (initBall) {
 				launchBallText.text = "Press F to launch ball";
+			}
+			if (flipperTextActive) {
+				flipperText.text = "Q and E to use flippers";
+				if (Input.GetKey (KeyCode.Q) || Input.GetKey (KeyCode.E)) {
+					flipperTextActive = false;
+				}
 			}
 			if (lives <= 0)
 				gameState = -1;
@@ -88,5 +94,12 @@ public class GameController : MonoBehaviour {
 		livesText.text = "Balls: " + lives;
 	}
 
-
+	void EraseAllText() {
+		startText.text = null;
+		gameOverText.text = null;
+		restartText.text = null;
+		livesText.text = null;
+		launchBallText.text = null;
+		flipperText.text = null;
+	}
 }
