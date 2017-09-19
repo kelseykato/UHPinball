@@ -5,10 +5,10 @@ using UnityEngine;
 public class MovePaddle : MonoBehaviour {
 
 	public float forceAmount;
-	public float maxVelocity;
+	//public float maxVelocity;
 	public GameObject paddleL;
 	public GameObject paddleR;
-	public ScoreKeeper ScoringObject;
+	private ScoreKeeper ScoringObject;
 
 	void Start() {
 		ScoringObject = GameObject.Find ("Camera").GetComponent<ScoreKeeper> ();
@@ -19,8 +19,8 @@ public class MovePaddle : MonoBehaviour {
 		Rigidbody rbl = paddleL.GetComponent<Rigidbody> ();
 		Rigidbody rbr = paddleR.GetComponent<Rigidbody> ();
 
-		rbl.maxAngularVelocity = maxVelocity;
-		rbr.maxAngularVelocity = maxVelocity;
+//		rbl.maxAngularVelocity = maxVelocity;
+//		rbr.maxAngularVelocity = maxVelocity;
 
 		if (Input.GetKey (KeyCode.Q)) {
 			rbl.AddForce (transform.forward * forceAmount, ForceMode.Acceleration);
@@ -41,12 +41,12 @@ public class MovePaddle : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision collision) {
-
-		if (collision.gameObject.name == "EyeBall") {
-			//Destroy (bumper);
-			ScoringObject.SetMultiplier(1);
-			//print (ScoringObject.TotalScore);	
-		}
+		ScoringObject.SetMultiplier(1);
+//		if (collision.gameObject.name == "EyeBall") {
+//			Destroy (bumper);
+//			ScoringObject.SetMultiplier(1);
+//			print (ScoringObject.TotalScore);	
+//		}
 	}
 
 }

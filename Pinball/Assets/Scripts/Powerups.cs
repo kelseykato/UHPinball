@@ -11,14 +11,18 @@ public class Powerups : MonoBehaviour {
 	private bool right = false;
 	private float moveSpeed;
 	private float rotateSpeed;
+	private int index;
+
 	private PowerupSpawner spawner;
 	private ScoreKeeper ScoringObject;
-	private int index;
+	private GameController controller;
+
 
 	// Use this for initialization
 	void Start () {
 		spawner = GameObject.Find ("Powerups").GetComponent<PowerupSpawner> ();
 		ScoringObject = GameObject.Find ("Camera").GetComponent<ScoreKeeper> ();
+		controller = GameObject.Find ("GameController").GetComponent<GameController> ();
 		rotateSpeed = 50;
 		moveSpeed = 4;
 	}
@@ -27,6 +31,10 @@ public class Powerups : MonoBehaviour {
 	void Update () {
 		MoveHorizontal ();
 		Rotate ();
+
+		if (controller.gameState == 0) {
+			Destroy (token);
+		}
 	}
 
 	void OnCollisionEnter(Collision col) {
@@ -40,11 +48,12 @@ public class Powerups : MonoBehaviour {
 
 		switch (index) {
 		case 0:
-			ScoringObject.SetMultiplier (oldMult += 5);
+			ScoringObject.SetMultiplier (oldMult += 5.0f);
 			index = -1;
 			break;
 		case 1:
 			Instantiate (ball, ballSpawn, ballRotation);
+			controller.AddLife ();
 			index = -1;
 			break;
 		case 2: 
