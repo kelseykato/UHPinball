@@ -7,30 +7,30 @@ if (getApplicationVersionAsFloat() >= 8.0)
 {
 	// Use unqualified path to support Maya 2013, 2015 and future version
 	loadPlugin "fbxmaya";
-	eval ("source \"/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/FBXMayaExport.mel\"");
+	eval ("source \"/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/FBXMayaExport.mel\"");
 }
 else if (getApplicationVersionAsFloat() >= 7.0)
 {
 	loadPlugin "/Applications/Autodesk/maya2018/Maya.app/Contents/MacOS/plug-ins/fbxmaya.lib";
-	eval ("source \"/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/FBXMayaExport.mel\"");
+	eval ("source \"/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/FBXMayaExport.mel\"");
 }
 else if (getApplicationVersionAsFloat() >= 6.5)
 {
 	loadPlugin "/Applications/Unity/Unity.app/Contents/Tools/fbxmaya65.lib";
-	eval ("source \"/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/FBXMayaExport.mel\"");
+	eval ("source \"/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/FBXMayaExport.mel\"");
 }
 else if (getApplicationVersionAsFloat() >= 6.0) 
 {
 	loadPlugin "/Applications/Unity/Unity.app/Contents/Tools/fbxmaya60.lib";
-	eval ("source \"/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/FBXMayaExport.mel\"");
+	eval ("source \"/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/FBXMayaExport.mel\"");
 }
 else if (getApplicationVersionAsFloat() >= 5.0)
 {
 	loadPlugin "/Applications/Unity/Unity.app/Contents/Tools/fbxmaya50.lib";
-	eval ("source \"/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/FBXMayaExport5.mel\"");
+	eval ("source \"/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/FBXMayaExport5.mel\"");
 }
 else if (getApplicationVersionAsFloat() >= 4.5) 
 {
 	loadPlugin "/Applications/Unity/Unity.app/Contents/Tools/fbxmaya45.lib";
-	eval ("source \"/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/FBXMayaExport5.mel\"");
+	eval ("source \"/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/FBXMayaExport5.mel\"");
 }

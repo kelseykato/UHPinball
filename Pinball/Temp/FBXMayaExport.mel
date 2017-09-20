@@ -1,13 +1,13 @@
 while (1)
 {	
-	if (`filetest -r "/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/CommandPipe"`)
+	if (`filetest -r "/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/CommandPipe"`)
 	{
 		$exportNormals = 0;
 		$exportTangents = 0;
 		$bakeCommand = "";
 	
 		// Parse settings
-		$waitpipe = `fopen "/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/CommandPipe" "r"`;
+		$waitpipe = `fopen "/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/CommandPipe" "r"`;
 		$filename = `fgetline $waitpipe`;
 		$fbxFilename = `fgetline $waitpipe`;
 		
@@ -144,9 +144,9 @@ while (1)
 			else
 				print "Could not open Maya file.";
 
-			sysFile -delete "/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/CommandPipe";
+			sysFile -delete "/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/CommandPipe";
 
-			$donepipe = `fopen "/Users/kelseykato/Desktop/ACM315/UHPinball/Pinball/Temp/SyncPipe" "w"`;
+			$donepipe = `fopen "/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Temp/SyncPipe" "w"`;
 			fwrite $donepipe "Done";
 			fclose $donepipe;
 			print "Finished maya loading and fbx conversion \n";
