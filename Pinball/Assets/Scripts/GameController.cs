@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour {
 	private bool flipperTextActive;
 
 	private PowerupSpawner PowerSpawner;
+	private ScoreKeeper ScoringObject;
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour {
 		initBall = true;
 		flipperTextActive = true;
 		PowerSpawner = GameObject.Find ("Powerups").GetComponent<PowerupSpawner> ();
+		ScoringObject = GameObject.Find ("Camera").GetComponent<ScoreKeeper> ();
 		cameraPosition = camera.GetComponent<Transform> ();
 	}
 	
@@ -58,6 +60,7 @@ public class GameController : MonoBehaviour {
 			if(Input.GetKey(KeyCode.R)) {
 				gameState = 0;
 				PowerSpawner.ResetLimit ();
+				ScoringObject.TotalScore = 0;
 				flipperTextActive = true;
 			}
 			break;
@@ -103,7 +106,9 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void AddLife() {
-		baseLives = lives;
+		if (lives <= 3) {
+			baseLives = lives;
+		}
 		lives++;
 		UpdateLifeCount ();
 	}

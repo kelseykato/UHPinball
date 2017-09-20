@@ -43,7 +43,7 @@ public class Powerups : MonoBehaviour {
 		// print (index);
 		float oldMult = ScoringObject.GetMultiplier ();
 		ScoringObject.Score (50);
-		Vector3 ballSpawn = new Vector3(2.5f, 2.0f, 3.0f);
+		Vector3 ballSpawn = new Vector3(-12.0f, 12.0f, 5.0f);
 		Quaternion ballRotation = Quaternion.identity;
 
 		switch (index) {

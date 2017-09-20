@@ -25,7 +25,7 @@ public class BallController: MonoBehaviour {
 			controller.baseLives--;
 			controller.initBall = true;
 			Destroy (gameObject);
-			if (controller.baseLives < controller.lives) {
+			if (controller.baseLives != controller.lives) {
 				controller.initBall = false;
 				controller.baseLives++;
 			}

@@ -5,7 +5,8 @@ using UnityEngine;
 public class MovePaddle : MonoBehaviour {
 
 	public float forceAmount;
-	//public float maxVelocity;
+	//public AudioClip hit;
+	public AudioSource hit;
 	public GameObject paddleL;
 	public GameObject paddleR;
 	private ScoreKeeper ScoringObject;
@@ -25,6 +26,7 @@ public class MovePaddle : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Q)) {
 			rbl.AddForce (transform.forward * forceAmount, ForceMode.Acceleration);
 			rbl.useGravity = true;
+			hit.Play ();
 		} else {
 			rbl.AddForce (-transform.forward * forceAmount, ForceMode.Acceleration);
 			rbl.useGravity = true;
@@ -34,6 +36,7 @@ public class MovePaddle : MonoBehaviour {
 		if (Input.GetKey (KeyCode.E)) {
 			rbr.AddForce (transform.forward * forceAmount, ForceMode.Acceleration);
 			rbr.useGravity = true;
+			hit.Play ();
 		} else {
 			rbr.AddForce (-transform.forward * forceAmount, ForceMode.Acceleration);
 			rbr.useGravity = true;

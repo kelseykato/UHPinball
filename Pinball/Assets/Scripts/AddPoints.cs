@@ -9,6 +9,7 @@ public class AddPoints : MonoBehaviour {
 	private ScoreKeeper ScoringObject;
 	public GameObject bumper;
 	public GameObject ball;
+	public AudioSource hit;
 
 //	void Awake(){
 //		ScoringObject = gameObject.Find("Main_Camera");
@@ -31,6 +32,7 @@ public class AddPoints : MonoBehaviour {
 		float oldMult = ScoringObject.GetMultiplier ();
 		ScoringObject.Score (pointsForBumper);
 		ScoringObject.SetMultiplier (oldMult += multiplierScale);
+		hit.Play ();
 
 //		if (collision.gameObject.name == ball.name || collision.gameObject.name == ball.name+"_Clone") {
 //			//Destroy (bumper);
