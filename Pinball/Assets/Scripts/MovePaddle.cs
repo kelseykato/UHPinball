@@ -7,12 +7,17 @@ public class MovePaddle : MonoBehaviour {
 	public float forceAmount;
 	//public AudioClip hit;
 	public AudioSource hit;
+	private bool hitReadyR;
+	private bool hitReadyL;
+
 	public GameObject paddleL;
 	public GameObject paddleR;
 	private ScoreKeeper ScoringObject;
 
 	void Start() {
 		ScoringObject = GameObject.Find ("Camera").GetComponent<ScoreKeeper> ();
+		hitReadyR = true;
+		hitReadyL = true;
 	}
 
 	void Update() {
@@ -26,8 +31,12 @@ public class MovePaddle : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Q)) {
 			rbl.AddForce (transform.forward * forceAmount, ForceMode.Acceleration);
 			rbl.useGravity = true;
-			hit.Play ();
+			if (hitReadyL) {
+				hit.Play ();
+				hitReadyL = false;
+			}
 		} else {
+			hitReadyL = true;
 			rbl.AddForce (-transform.forward * forceAmount, ForceMode.Acceleration);
 			rbl.useGravity = true;
 		}
@@ -36,8 +45,12 @@ public class MovePaddle : MonoBehaviour {
 		if (Input.GetKey (KeyCode.E)) {
 			rbr.AddForce (transform.forward * forceAmount, ForceMode.Acceleration);
 			rbr.useGravity = true;
-			hit.Play ();
+			if (hitReadyR) {
+				hit.Play ();
+				hitReadyR = false;
+			}
 		} else {
+			hitReadyR = true;
 			rbr.AddForce (-transform.forward * forceAmount, ForceMode.Acceleration);
 			rbr.useGravity = true;
 		}

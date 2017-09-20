@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
 	public GameObject ball;
 	public GameObject camera;
 	private Transform cameraPosition;
+	public AudioSource music;
 
 	public GUIText gameOverText;
 	public GUIText startText;
@@ -47,6 +48,8 @@ public class GameController : MonoBehaviour {
 		PowerSpawner = GameObject.Find ("Powerups").GetComponent<PowerupSpawner> ();
 		ScoringObject = GameObject.Find ("Camera").GetComponent<ScoreKeeper> ();
 		cameraPosition = camera.GetComponent<Transform> ();
+
+		music.Play ();
 	}
 	
 	// Update is called once per frame
@@ -57,11 +60,13 @@ public class GameController : MonoBehaviour {
 			gameOverText.text = "YOU SUCK";
 			restartText.text = "Press R to return to start";
 			launchBallText.text = null;
+			music.Stop ();
 			if(Input.GetKey(KeyCode.R)) {
 				gameState = 0;
 				PowerSpawner.ResetLimit ();
 				ScoringObject.TotalScore = 0;
 				flipperTextActive = true;
+				music.Play ();
 			}
 			break;
 
