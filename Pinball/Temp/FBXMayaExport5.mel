@@ -1,8 +1,8 @@
 print "Starting maya loading and fbx conversion \n";
 	
-if (`file -q -exists "/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Assets/Prefabs/pinball paddles.mb"`)
+if (`file -q -exists "/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Assets/Prefabs/sealbumper25.mb"`)
 {		
-	file -o "/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Assets/Prefabs/pinball paddles.mb";
+	file -o "/Users/justinb/Documents/repo_pinball/UHPinball/Pinball/Assets/Prefabs/sealbumper25.mb";
 	FBXExportEmbeddedTextures -v false;
 	// FBXExportHardEdges -v true;
 	FBXExportApplyConstantKeyReducer -v false;
