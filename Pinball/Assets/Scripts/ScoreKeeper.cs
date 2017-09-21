@@ -32,12 +32,12 @@ public class ScoreKeeper : MonoBehaviour {
 	}
 
 	void UpdateScore() {
-		scoreText.text = "Score: " + TotalScore;
+		scoreText.text = "score " + TotalScore;
 		// print (TotalScore);
 	}
 
 	void UpdateMultiplier() {
-		multiplierText.text = "Multiplier: " + multiplier;
+		multiplierText.text = "multiplier " + multiplier;
 		// print (TotalScore);
 	}
 	/**

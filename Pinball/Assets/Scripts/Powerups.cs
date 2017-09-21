@@ -17,12 +17,15 @@ public class Powerups : MonoBehaviour {
 	private ScoreKeeper ScoringObject;
 	private GameController controller;
 
+	private AudioSource hit;
+
 
 	// Use this for initialization
 	void Start () {
 		spawner = GameObject.Find ("Powerups").GetComponent<PowerupSpawner> ();
 		ScoringObject = GameObject.Find ("Camera").GetComponent<ScoreKeeper> ();
 		controller = GameObject.Find ("GameController").GetComponent<GameController> ();
+		hit = GameObject.Find ("PowerupSound").GetComponent<AudioSource> ();
 		rotateSpeed = 50;
 		moveSpeed = 4;
 	}
@@ -38,6 +41,8 @@ public class Powerups : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
+
+		hit.Play ();
 		
 		index = spawner.index;
 		// print (index);

@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		gameState = 0;
 
-		ballSpawn = new Vector3(4.5f, 12.7f, 8.0f);
+		ballSpawn = new Vector3(12.0f, 12.0f, 5.0f);
 		cameraPosGame = new Vector3(0f, 18.6f, -21.5f);
 		cameraPosMenu = new Vector3(40.0f, 20.0f, -25.0f);
 		cameraRotGame = new Vector3 (15.0f, 0, 0);
@@ -57,8 +57,8 @@ public class GameController : MonoBehaviour {
 
 		switch (gameState) {
 		case -1:
-			gameOverText.text = "YOU SUCK";
-			restartText.text = "Press R to return to start";
+			gameOverText.text = "game over";
+			restartText.text = "press r to return to start";
 			launchBallText.text = null;
 			music.Stop ();
 			if(Input.GetKey(KeyCode.R)) {
@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour {
 			cameraPosition.position = cameraPosMenu;
 			cameraPosition.rotation = Quaternion.Euler(cameraRotMenu.x, cameraRotMenu.y, cameraRotMenu.z);
 			EraseAllText ();
-			startText.text = "Press SPACE to Start";
+			startText.text = "press space to start";
 			if (Input.GetKey (KeyCode.Space)) {
 				gameState = 1;
 				lives = 3;
@@ -93,10 +93,10 @@ public class GameController : MonoBehaviour {
 				initBall = false;
 			}
 			if (initBall) {
-				launchBallText.text = "Press F to launch ball";
+				launchBallText.text = "press f to launch ball";
 			}
 			if (flipperTextActive) {
-				flipperText.text = "Q and E to use flippers";
+				flipperText.text = "q and e to use flippers";
 				if (Input.GetKey (KeyCode.Q) || Input.GetKey (KeyCode.E)) {
 					flipperTextActive = false;
 				}
@@ -119,7 +119,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void UpdateLifeCount() {
-		livesText.text = "Balls: " + lives;
+		livesText.text = "balls: " + lives;
 	}
 
 	void EraseAllText() {
