@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 66546a9e982e44dc2822a5af8fe2c68e
+timeCreated: 1506113159
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cerena
+  fontNames:
+  - Cerena
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
